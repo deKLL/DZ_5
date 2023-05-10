@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int NUM_MONTHS = 12;
+    double profits[NUM_MONTHS];
+
+    cout << "Enter profits for the year:\n";
+    for (int i = 0; i < NUM_MONTHS; i++) {
+        cout << "Profit for month " << i+1 << ": ";
+        cin >> profits[i];
+    }
+
+    int startMonth, endMonth;
+    cout << "Enter range to find max and min profits (e.g. 3 6 for search between third and sixth month):\n";
+    cin >> startMonth >> endMonth;
+
+    int maxIndex = startMonth - 1;
+    int minIndex = startMonth - 1;
+    for (int i = startMonth - 1; i < endMonth; i++) {
+        if (profits[i] > profits[maxIndex]) {
+            maxIndex = i;
+        }
+        if (profits[i] < profits[minIndex]) {
+            minIndex = i;
+        }
+    }
+
+    cout << "Month with maximum profit in the selected range: " << maxIndex+1 << endl;
+    cout << "Month with minimum profit in the selected range: " << minIndex+1 << endl;
+
+    return 0;
+}
